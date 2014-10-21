@@ -68,8 +68,8 @@ define(function (require) {
           advanced: true
         },
         {
-          name: 'value_script',
-          editor: require('text!components/agg_types/controls/value_script.html'),
+          name: 'script',
+          editor: require('text!components/agg_types/controls/script.html'),
           advanced: true
         }
       ]
