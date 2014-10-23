@@ -37,7 +37,7 @@ define(function (require) {
   };
 
   var invalidEsResponse = function () {
-    return Promise.resolve({ body: { error: 'mock invalid query' } });
+    return Promise.reject({ body: { error: 'mock invalid query' } });
   };
 
   var init = function () {
@@ -95,11 +95,64 @@ define(function (require) {
       it('should call validate on input change', function () {
         // once for $watch, once for change
         var checkCount = 2;
-        $elem.val('key:value');
+        $elem.val('someValue');
         $elem.scope().$digest();
         expect(mockEs.indices.validateQuery.callCount).to.be(checkCount);
       });
     });
 
+    describe('valid querystring', function () {
+      beforeEach(function () {
+        mockValidateReturns = validEsResponse();
+        init();
+      });
+
+      it('should set valid state', function (done) {
+        // give angular time to set up the directive
+        setTimeout(function () {
+          expect($elem.hasClass('ng-valid-query-input')).to.be(true);
+          expect($elem.hasClass('ng-valid')).to.be(true);
+          done();
+        }, 0);
+      });
+    });
+
+    describe('invalid querystring', function () {
+      beforeEach(function () {
+        mockValidateReturns = invalidEsResponse();
+        init();
+      });
+
+      it('should set invalid state', function (done) {
+        // give angular time to set up the directive
+        setTimeout(function () {
+          expect($elem.hasClass('ng-invalid')).to.be(true);
+          done();
+        }, 0);
+      });
+
+      it('should change to invalid state');
+      // it('should change to invalid state', function (done) {
+      //   before(function () {
+      //     mockValidateReturns.onCall(0).returns(validEsResponse());
+      //     mockValidateReturns.onCall(1).returns(validEsResponse());
+      //     mockValidateReturns.onCall(2).returns(validEsResponse());
+      //     init();
+      //   });
+
+      //   var checkInput = function (valid) {
+      //     var className = (valid) ? 'ng-valid' : 'ng-invalid';
+      //     expect($elem.hasClass(className)).to.be(true);
+      //   };
+
+      //   setTimeout(function () {
+      //     // checkInput(true);
+      //     setTimeout(function () {
+      //       checkInput(true);
+      //       done();
+      //     }, 0);
+      //   }, 0);
+      // });
+    });
   });
 });
