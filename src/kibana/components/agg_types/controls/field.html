@@ -2,16 +2,18 @@
   <label for="field">
     Field
   </label>
-  <select
-    class="form-control"
+
+  <ui-select
     name="field"
     required
-    ng-model="params.field"
-    ng-options="
-      field as field.displayName group by field.type for field in aggConfig.vis.indexPattern.fields.raw
+    ng-model="params.field">
+    <ui-select-match placeholder="Select field">{{$select.selected.displayName}}</ui-select-match>
+    <ui-select-choices repeat="field in aggConfig.vis.indexPattern.fields.raw
       | fieldType: aggParam.filterFieldTypes
       | matchAny: [{ indexed: true }, { scripted: true }]
       | orderBy: ['type', 'name']
-    ">
-  </select>
+      | filter: $select.search">
+      <span>{{ field.displayName }}</span>
+    </ui-select-choices>
+  </ui-select>
 </div>
