@@ -112,19 +112,11 @@ define(function (require) {
      * @return {array}
      */
     deepUniq: function (arr) {
-      var seenItems = [];
-      var result = [];
-
-      _.each(arr, function (item) {
-        for (var n = 0; n < seenItems.length; n++) {
-          if (_.isDeepEqual(seenItems[n], item)) return;
+      return _.transform(arr, function (uniq, item) {
+        if (!_.find(uniq, _.partial(_.isEqual, item))) {
+          uniq.push(item);
         }
-
-        seenItems.push(item);
-        result.push(item);
-      });
-
-      return result;
+      }, []);
     },
 
     /**
