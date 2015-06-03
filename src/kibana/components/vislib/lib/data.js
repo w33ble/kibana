@@ -69,12 +69,11 @@ define(function (require) {
         stack: layoutStack
       });
 
-      if (self._attr.mode === 'stacked' && self._attr.type === 'histogram') {
-        console.log('stacked');
+      if (self.shouldBeStacked()) {
         self._attr.stack.out(function (d, y0, y) {
           return self._stackNegAndPosVals(d, y0, y);
         });
-      } else console.log('NOT STACKED');
+      }
     };
 
     /**
@@ -300,9 +299,9 @@ define(function (require) {
      */
     Data.prototype.shouldBeStacked = function () {
       var isHistogram = (this._attr.type === 'histogram');
+      var grouped = (this._attr.mode === 'grouped');
       var isArea = (this._attr.type === 'area');
       var isOverlapping = (this._attr.mode === 'overlap');
-      var grouped = (this._attr.mode === 'grouped');
 
       var stackedHisto = isHistogram && !grouped;
       var stackedArea = isArea && !isOverlapping;
