@@ -38,8 +38,7 @@ define(function (require) {
       this.data = data;
       this.type = this.getDataType();
 
-      this.labels;
-
+      this.labels = [];
       if (this.type === 'series') {
         if (getLabels(data).length === 1 && getLabels(data)[0] === '') {
           this.labels = [(this.get('yAxisLabel'))];
