@@ -24,6 +24,7 @@ define(function (require) {
 
       this.data = data;
       this._setAttributes(attr);
+      this._normalizeOrderedData();
       this.type = this.getDataType();
 
       this.labels = [];
@@ -38,8 +39,6 @@ define(function (require) {
       }
 
       this.color = this.labels ? color(this.labels) : undefined;
-
-      this._normalizeOrdered();
     }
 
     Data.prototype._setAttributes = function (attr) {
@@ -617,7 +616,7 @@ define(function (require) {
      *
      * @return {undefined}
      */
-    Data.prototype._normalizeOrdered = function () {
+    Data.prototype._normalizeOrderedData = function () {
       if (!this.data.ordered || !this.data.ordered.date) return;
 
       var missingMin = this.data.ordered.min == null;
