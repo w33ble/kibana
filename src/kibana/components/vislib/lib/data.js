@@ -22,20 +22,8 @@ define(function (require) {
         return new Data(data, attr);
       }
 
-      var self = this;
-      var offset;
-
-      if (attr.mode === 'stacked') {
-        offset = 'zero';
-      } else if (attr.mode === 'percentage') {
-        offset = 'expand';
-      } else if (attr.mode === 'grouped') {
-        offset = 'group';
-      } else {
-        offset = attr.mode;
-      }
-
       this.data = data;
+      this._setAttributes(attr);
       this.type = this.getDataType();
 
       this.labels = [];
@@ -52,25 +40,42 @@ define(function (require) {
       this.color = this.labels ? color(this.labels) : undefined;
 
       this._normalizeOrdered();
+    }
 
-      this._attr = _.defaults(attr || {}, {
-        stack: d3.layout.stack()
-          .x(function (d) { return d.x; })
-          .y(function (d) {
-            if (offset === 'expand') {
-              return Math.abs(d.y);
-            }
-            return d.y;
-          })
-          .offset(offset || 'zero')
+    Data.prototype._setAttributes = function (attr) {
+      var self = this;
+
+      var offsets = {
+        stacked: 'zero',
+        percentage: 'expand',
+        grouped: 'group'
+      };
+
+      var offset = offsets[attr.mode] || attr.mode;
+
+      var layoutStack = d3.layout.stack()
+      .offset(offset)
+      .x(function (d) {
+        return d.x;
+      })
+      .y(function (d) {
+        if (offset === 'expand') {
+          return Math.abs(d.y);
+        }
+        return d.y;
       });
 
-      if (attr.mode === 'stacked' && attr.type === 'histogram') {
-        this._attr.stack.out(function (d, y0, y) {
+      self._attr = _.defaults(attr || {}, {
+        stack: layoutStack
+      });
+
+      if (self._attr.mode === 'stacked' && self._attr.type === 'histogram') {
+        console.log('stacked');
+        self._attr.stack.out(function (d, y0, y) {
           return self._stackNegAndPosVals(d, y0, y);
         });
-      }
-    }
+      } else console.log('NOT STACKED');
+    };
 
     /**
      * Returns true for positive numbers
