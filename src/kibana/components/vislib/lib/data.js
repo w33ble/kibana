@@ -187,8 +187,10 @@ define(function (require) {
         }
 
         // get stack and value count for next chart
-        this._cache.count.stacks = data[this._cache.index.chart].series.length; // number of stack layers
-        this._cache.count.values = data[this._cache.index.chart].series[this._cache.index.stack].values.length; // number of values
+        var chartData = data[this._cache.index.chart];
+        this._cache.count.stacks = chartData.series.length;
+        // this._cache.count.values = data[this._cache.index.chart].series[this._cache.index.stack].values.length;
+        this._cache.count.values = this._cache.count.stacks ? chartData.series[this._cache.index.stack].values.length : 0;
       }
     };
 
@@ -353,7 +355,8 @@ define(function (require) {
       // for each object in the dataArray,
       // push the calculated y value to the initialized array (arr)
       _.each(this.chartData(), function (chart) {
-        min = Math.min(min, self._getYExtent(chart, 'min', getValue));
+        var calcMin = self._getYExtent(chart, 'min', getValue);
+        if (!_.isUndefined(calcMin)) min = Math.min(min, calcMin);
       });
 
       return min;
@@ -389,7 +392,8 @@ define(function (require) {
       // for each object in the dataArray,
       // push the calculated y value to the initialized array (arr)
       _.each(this.chartData(), function (chart) {
-        max = Math.max(max, self._getYExtent(chart, 'max', getValue));
+        var calcMax = self._getYExtent(chart, 'max', getValue);
+        if (!_.isUndefined(calcMax)) max = Math.max(max, calcMax);
       });
 
       return max;
