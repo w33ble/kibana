@@ -301,11 +301,11 @@ define(function (require) {
      */
     Data.prototype.shouldBeStacked = function () {
       var isHistogram = (this._attr.type === 'histogram');
-      var grouped = (this._attr.mode === 'grouped');
+      var stacked = (this._attr.mode === 'stacked');
       var isArea = (this._attr.type === 'area');
       var isOverlapping = (this._attr.mode === 'overlap');
 
-      var stackedHisto = isHistogram && !grouped;
+      var stackedHisto = isHistogram && stacked;
       var stackedArea = isArea && !isOverlapping;
 
       return stackedHisto || stackedArea;
