@@ -90,19 +90,16 @@ define(function (require) {
     };
 
     /**
-     * Adds two input values
-     */
-    Data.prototype._addVals = function (a, b) {
-      return a + b;
-    };
-
-    /**
      * Returns the results of the addition of numbers in a filtered array.
      */
     Data.prototype._sumYs = function (arr, callback) {
       var filteredArray = arr.filter(callback);
 
-      return (filteredArray.length) ? filteredArray.reduce(this._addVals) : 0;
+      if (!filteredArray.length) return 0;
+
+      return filteredArray.reduce(function (sum, num) {
+        return sum + num;
+      }, 0);
     };
 
     /**
