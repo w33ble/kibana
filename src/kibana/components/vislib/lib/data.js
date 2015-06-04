@@ -153,44 +153,45 @@ define(function (require) {
      */
     Data.prototype._stackNegAndPosVals = function (d, y0, y) {
       var data = this.chartData();
+      var cache = this._cache;
 
       // Storing counters and data characteristics needed to stack values properly
-      if (!this._cache) {
-        this._cache = this._createCache();
+      if (!cache) {
+        cache = this._cache = this._createCache();
       }
 
-      d.y0 = this._calcYZero(y, this._cache.yValsArr);
-      ++this._cache.index.stack;
+      d.y0 = this._calcYZero(y, cache.yValsArr);
+      ++cache.index.stack;
 
 
       // last stack, or last value, reset the stack count and y value array
-      var lastStack = (this._cache.index.stack >= this._cache.count.stacks);
+      var lastStack = (cache.index.stack >= cache.count.stacks);
       if (lastStack) {
-        this._cache.index.stack = 0;
-        ++this._cache.index.value;
-        this._cache.yValsArr = [];
+        cache.index.stack = 0;
+        ++cache.index.value;
+        cache.yValsArr = [];
       // still building the stack collection, push v value to array
       } else if (y !== 0) {
-        this._cache.yValsArr.push(y);
+        cache.yValsArr.push(y);
       }
 
       // last value, prepare for the next chart, if one exists
-      var lastValue = (this._cache.index.value >= this._cache.count.values);
+      var lastValue = (cache.index.value >= cache.count.values);
       if (lastValue) {
-        this._cache.index.value = 0;
-        ++this._cache.index.chart;
+        cache.index.value = 0;
+        ++cache.index.chart;
 
         // no more charts, reset the queue and finish
-        if (this._cache.index.chart >= this._cache.count.charts) {
+        if (cache.index.chart >= cache.count.charts) {
           this._cache = this._createCache();
           return;
         }
 
         // get stack and value count for next chart
-        var chartData = data[this._cache.index.chart];
-        this._cache.count.stacks = chartData.series.length;
-        // this._cache.count.values = data[this._cache.index.chart].series[this._cache.index.stack].values.length;
-        this._cache.count.values = this._cache.count.stacks ? chartData.series[this._cache.index.stack].values.length : 0;
+        var chartData = data[cache.index.chart];
+        cache.count.stacks = chartData.series.length;
+        // cache.count.values = data[cache.index.chart].series[cache.index.stack].values.length;
+        cache.count.values = cache.count.stacks ? chartData.series[cache.index.stack].values.length : 0;
       }
     };
 
