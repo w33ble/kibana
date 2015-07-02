@@ -3,6 +3,7 @@ define(function (require) {
     var VislibVisType = Private(require('components/vislib_vis_type/VislibVisType'));
     var Schemas = Private(require('components/vis/Schemas'));
     var geoJsonConverter = Private(require('components/agg_response/geo_json/geo_json'));
+    var syncMaps = require('plugins/kbn_vislib_vis_types/_sync_maps');
     var _ = require('lodash');
     var supports = require('utils/supports');
 
@@ -28,40 +29,43 @@ define(function (require) {
         editor: require('text!plugins/kbn_vislib_vis_types/editors/tile_map.html')
       },
       listeners: {
-        rectangle: function (event) {
-          var agg = _.get(event, 'chart.geohashGridAgg');
+        rectangle: function (ev) {
+          var agg = _.get(ev, 'chart.geohashGridAgg');
           if (!agg) return;
 
           var pushFilter = Private(require('components/filter_bar/push_filter'))(getAppState());
           var indexPatternName = agg.vis.indexPattern.id;
           var field = agg.fieldName();
           var filter = {geo_bounding_box: {}};
-          filter.geo_bounding_box[field] = event.bounds;
+          filter.geo_bounding_box[field] = ev.bounds;
 
           pushFilter(filter, false, indexPatternName);
         },
-        mapMoveEnd: function (event) {
-          var agg = _.get(event, 'chart.geohashGridAgg');
+        mapMoveEnd: function (ev, handler) {
+          var agg = _.get(ev, 'chart.geohashGridAgg');
           if (!agg) return;
 
-          agg.params.mapZoom = event.zoom;
-          agg.params.mapCenter = [event.center.lat, event.center.lng];
+          var zoom = agg.params.mapZoom = ev.zoom;
+          var center = agg.params.mapCenter = [ev.center.lat, ev.center.lng];
+
+          var chartMaps = _.flatten(_.pluck(handler.charts, 'maps'));
+          syncMaps(ev.map, chartMaps, center, zoom);
 
           var editableVis = agg.vis.getEditableVis();
           if (!editableVis) return;
 
           var editableAgg = editableVis.aggs.byId[agg.id];
           if (editableAgg) {
-            editableAgg.params.mapZoom = event.zoom;
-            editableAgg.params.mapCenter = [event.center.lat, event.center.lng];
+            editableAgg.params.mapZoom = zoom;
+            editableAgg.params.mapCenter = center;
           }
         },
-        mapZoomEnd: function (event) {
-          var agg = _.get(event, 'chart.geohashGridAgg');
+        mapZoomEnd: function (ev) {
+          var agg = _.get(ev, 'chart.geohashGridAgg');
           if (!agg || !agg.params.autoPrecision) return;
 
-          // zoomPrecision maps event.zoom to a geohash precision value
-          // event.limit is the configurable max geohash precision
+          // zoomPrecision maps ev.zoom to a geohash precision value
+          // ev.limit is the configurable max geohash precision
           // default max precision is 7, configurable up to 12
           var zoomPrecision = {
             1: 2,
@@ -85,7 +89,7 @@ define(function (require) {
           };
 
           var precision = config.get('visualization:tileMap:maxPrecision');
-          agg.params.precision = Math.min(zoomPrecision[event.zoom], precision);
+          agg.params.precision = Math.min(zoomPrecision[ev.zoom], precision);
 
           courier.fetch();
         }
