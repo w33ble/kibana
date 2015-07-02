@@ -57,7 +57,7 @@ define(function (require) {
       this.getProxyHandler = _.memoize(function (event) {
         var self = this;
         return function (e) {
-          self.vis.emit(event, e);
+          self.vis.emit(event, e, self);
         };
       });
     }
