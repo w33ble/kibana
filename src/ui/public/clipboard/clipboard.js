@@ -1,5 +1,4 @@
 define(function (require) {
-  var ZeroClipboard = require('ng-clip');
   var $ = require('jquery');
   var html = require('ui/clipboard/clipboard.html');
 
@@ -15,26 +14,41 @@ define(function (require) {
       },
       transclude: true,
       link: function ($scope, $el, attr) {
-        if (ZeroClipboard.isFlashUnusable()) {
+        var $input = $el.find('input');
+
+        var copyAvailable = document.queryCommandSupported('copy');
+        if (!copyAvailable) {
           $scope.disabled = true;
           return;
         }
 
         $scope.tipPlacement = attr.tipPlacement || 'top';
         $scope.tipText = attr.tipText || 'Copy to clipboard';
-        $scope.tipConfirm = attr.tipConfirm = 'Copied!';
+        $scope.tipSuccess = attr.tipSuccess = 'Copied!';
+        $scope.tipFailed = attr.tipFailed = 'Copied!';
         $scope.icon = attr.icon || 'fa-clipboard';
 
-        $scope.shownText = $scope.tipText;
+        function resetTooltip() {
+          $scope.shownText = $scope.tipText;
+        }
+        resetTooltip();
+        $el.on('mouseleave', resetTooltip);
 
         $el.on('click', function () {
-          $scope.shownText = $scope.tipConfirm;
+          var success;
+
+          try {
+            $input.get(0).select();
+            success = document.execCommand('copy');
+          } catch (e) {
+            success = false;
+          }
+
+          if (success) $scope.shownText = $scope.tipSuccess;
+          else $scope.shownText = $scope.tipFailed;
+
           // Reposition tooltip to account for text length change
           $('a', $el).mouseenter();
-        });
-
-        $el.on('mouseleave', function () {
-          $scope.shownText = $scope.tipText;
         });
 
         $scope.$on('$destroy', function () {

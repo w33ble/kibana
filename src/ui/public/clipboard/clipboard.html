@@ -6,6 +6,9 @@
     tooltip-animation="false"
     tooltip-popup-delay="0"
     tooltip-append-to-body="true">
-    <i class="fa" ng-class="icon" clip-copy="copyText"></i>
+    <i class="fa" ng-class="icon"></i>
   </a>
+  <div style="width:10px; height:10px; overflow:hidden !important; position: absolute; top: 0; left: -10000px;">
+    <input ng-value="copyText">
+  </div>
 </span>
