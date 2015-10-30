@@ -18,7 +18,6 @@ define(function (require) {
   Common.prototype = {
     constructor: Common,
 
-
     tryForTime: function tryForTime(timeout, block) {
       var self = this;
       var start = Date.now();
@@ -76,7 +75,6 @@ define(function (require) {
         throw new Error(reason);
       });
     }
-
   };
 
   return Common;
