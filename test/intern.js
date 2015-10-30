@@ -12,7 +12,10 @@ define(function (require) {
     }],
 
     tunnelOptions: serverConfig.webdriver,
-    functionalSuites: ['test/functional/status.js', 'test/functional/testSettings'],
+    functionalSuites: [
+      //'test/functional/status.js',
+      'test/functional/apps/settings/testSettings'
+    ],
     excludeInstrumentation: /(fixtures|node_modules)\//,
 
     loaderOptions: {
