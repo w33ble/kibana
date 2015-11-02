@@ -8,16 +8,12 @@ define(function (require) {
   var fs = require('intern/dojo/node!fs');
   var path = require('intern/dojo/node!path');
 
-
   function Common(remote) {
     this.remote = remote;
   }
 
-  var defaultTimeout = 5000;
-
   Common.prototype = {
     constructor: Common,
-
 
     tryForTime: function tryForTime(timeout, block) {
       var self = this;
@@ -53,30 +49,36 @@ define(function (require) {
     },
 
     sleep: function sleep(sleepMilliseconds) {
-      var self = this;
-      self.log('... sleep(' + sleepMilliseconds + ') start');
+      var log = this.log;
+      log('... sleep(' + sleepMilliseconds + ') start');
 
-      var promise = new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          self.log('... sleep(' + sleepMilliseconds + ') end');
-          resolve({});
-        }, sleepMilliseconds);
-      });
-      return promise;
+      return Promise.resolve().delay(sleepMilliseconds)
+      .then(function () { log('... sleep(' + sleepMilliseconds + ') end'); })
     },
 
-    screenshotError: function screenshotError(testSubName, reason) {
+    handleError: function (testObj) {
       var self = this;
-      var now = Date.now();
-      var filename = path.resolve('./screenshot-' + testSubName + '-ERROR-' + now + '.png');
-      self.log('Test Failed, taking screenshot "' + filename + '"');
-      return self.remote.takeScreenshot()
+      testName = (testObj.parent) ? [testObj.parent.name, testObj.name].join('_') : testObj.name;
+
+      return function (reason) {
+        var now = Date.now();
+        var filename = path.resolve(['./screenshot', now, testName, '.png'].join('_'));
+
+        return self.saveScreenshot(filename)
+        .then(function () {
+          throw new Error(reason);
+        })
+      };
+    },
+
+    saveScreenshot: function saveScreenshot(filename) {
+      this.log('Test Failed, taking screenshot "' + filename + '"');
+
+      return this.remote.takeScreenshot()
       .then(function writeScreenshot(data) {
         fs.writeFileSync(filename, data);
-        throw new Error(reason);
       });
     }
-
   };
 
   return Common;
