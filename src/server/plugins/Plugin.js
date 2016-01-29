@@ -14,7 +14,7 @@ module.exports = class Plugin {
     this.pkg = pkg;
     this.path = path;
 
-    this.id = opts.id || pkg.name;
+    this.id = opts.name || pkg.name;
     this.uiExportsSpecs = opts.uiExports || {};
     this.requiredIds = opts.require || [];
     this.version = opts.version || pkg.version;
