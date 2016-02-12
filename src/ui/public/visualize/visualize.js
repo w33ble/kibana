@@ -8,9 +8,7 @@ import uiModules from 'ui/modules';
 import visualizeTemplate from 'ui/visualize/visualize.html';
 uiModules
 .get('kibana/directive')
-.directive('visualize', function (Notifier, SavedVis, indexPatterns, Private, config, $timeout) {
-
-
+.directive('visualize', function (Notifier, SavedVis, indexPatterns, Private, config, Promise, $timeout) {
   var visTypes = Private(RegistryVisTypesProvider);
 
   var notify = new Notifier({
@@ -31,6 +29,7 @@ uiModules
     link: function ($scope, $el, attr) {
       var chart; // set in "vis" watcher
       var minVisChartHeight = 180;
+      $scope.renderCount = 0;
 
       if (_.isUndefined($scope.showSpyPanel)) {
         $scope.showSpyPanel = true;
@@ -148,7 +147,8 @@ uiModules
 
       $scope.$watch('esResp', prereq(function (resp, prevResp) {
         if (!resp) return;
-        $scope.renderbot.render(resp);
+        Promise.resolve($scope.renderbot.render(resp))
+        .then(() => $scope.renderCount++);
       }));
 
       $scope.$watch('renderbot', function (newRenderbot, oldRenderbot) {
