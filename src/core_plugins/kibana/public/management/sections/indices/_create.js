@@ -131,6 +131,8 @@ uiModules.get('apps/management')
     'index.name',
     'index.nameInterval'
   ], function (newVal, oldVal) {
+    if (isInitialWatchCall(newVal, oldVal)) return;
+
     let lastPromise;
     resetIndex();
     samplePromise = lastPromise = updateSamples()
@@ -162,7 +164,11 @@ uiModules.get('apps/management')
   $scope.$watchMulti([
     'index.isTimeBased',
     'index.sampleCount'
-  ], $scope.refreshFieldList);
+  ], function (newVals, oldVals) {
+    if (isInitialWatchCall(newVals, oldVals)) return;
+
+    $scope.refreshFieldList();
+  });
 
   function updateSamples() {
     const patternErrors = [];
@@ -313,5 +319,14 @@ uiModules.get('apps/management')
       id: index.name,
       intervalName: index.nameInterval
     };
+  }
+
+  function isInitialWatchCall(newVals, oldVals) {
+    if (!Array.isArray(newVals)) newVals = [newVals];
+    if (!Array.isArray(oldVals)) oldVals = [oldVals];
+
+    return newVals.every(function (newVal, i) {
+      return _.isEqual(newVal, oldVals[i]);
+    });
   }
 });
