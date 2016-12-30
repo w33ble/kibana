@@ -25,16 +25,15 @@ uiModules.get('apps/management')
     name: 'logstash-*',
 
     isTimeBased: true,
+    timeField: null,
     nameIsPattern: false,
     notExpandable: false,
     sampleCount: 5,
     nameIntervalOptions: intervals,
+    nameInterval: _.find(intervals, { name: 'daily' }),
 
     fetchFieldsError: 'Loading'
   };
-
-  index.nameInterval = _.find(index.nameIntervalOptions, { name: 'daily' });
-  index.timeField = null;
 
   $scope.canExpandIndices = function () {
     // to maximize performance in the digest cycle, move from the least
