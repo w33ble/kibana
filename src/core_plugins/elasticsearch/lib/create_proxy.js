@@ -2,7 +2,7 @@ import createAgent from './create_agent';
 import mapUri from './map_uri';
 import { assign } from 'lodash';
 
-function createProxy(server, method, path, config) {
+export function createProxy(server, method, path, config) {
   const proxies = new Map([
     ['/elasticsearch', server.plugins.elasticsearch.getCluster('data')],
     ['/es_admin', server.plugins.elasticsearch.getCluster('admin')]
@@ -51,11 +51,9 @@ function createProxy(server, method, path, config) {
   }
 }
 
-createProxy.createPath = function createPath(prefix, path) {
+export function createPath(prefix, path) {
   path = path[0] === '/' ? path : `/${path}`;
   prefix = prefix[0] === '/' ? prefix : `/${prefix}`;
 
   return `${prefix}${path}`;
-};
-
-module.exports = createProxy;
+}

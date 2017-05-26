@@ -1,20 +1,10 @@
-import getLastValue from './lib/get_last_value';
-import flot from './lib/flot';
-import events from './lib/events';
+// utilities
+export getLastValue from './lib/get_last_value';
+export flot from './lib/flot';
+export events from './lib/events';
 
-import Timeseries from './components/timeseries';
-import Metric from './components/metric';
-import Gauge from './components/gauge';
-import TopN from './components/top_n';
-
-export default {
-  // visualizations
-  TopN,
-  Timeseries,
-  Metric,
-  Gauge,
-  // utilities
-  getLastValue,
-  flot,
-  events,
-};
+// visualizations
+export Timeseries from './components/timeseries';
+export Metric from './components/metric';
+export Gauge from './components/gauge';
+export TopN from './components/top_n';
