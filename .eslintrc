@@ -1,2 +1,14 @@
 ---
-extends: '@elastic/kibana'
+extends:
+  - '@elastic/kibana'
+  - plugin:import/errors
+  - plugin:import/warnings
+
+settings:
+  import/resolver:
+    - node
+    - kibana: { kibanaPath: '.' }
+
+rules:
+  # Fix use of module.exports
+  import/default: 1
