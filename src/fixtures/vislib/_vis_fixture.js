@@ -44,4 +44,4 @@ export default function VislibFixtures(Private) {
       hasTimeField: true
     }));
   };
-};
+}

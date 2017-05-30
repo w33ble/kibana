@@ -261,4 +261,4 @@ export default function MapsRenderbotFactory(Private, $injector, tilemapSettings
 
 
   return MapsRenderbot;
-};
+}

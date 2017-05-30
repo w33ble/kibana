@@ -54,4 +54,4 @@ ${requires}
 require('ui/test_harness').bootstrap(/* go! */);
 `;
 
-};
+}

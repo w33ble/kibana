@@ -79,4 +79,4 @@ export default function VislibRenderbotFactory(Private, $injector) {
   };
 
   return VislibRenderbot;
-};
+}

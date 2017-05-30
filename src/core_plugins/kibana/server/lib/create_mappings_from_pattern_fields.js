@@ -32,4 +32,4 @@ export default function createMappingsFromPatternFields(fields) {
   });
 
   return mappings;
-};
+}
