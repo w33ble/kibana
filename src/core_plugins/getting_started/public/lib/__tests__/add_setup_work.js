@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { set } from 'lodash';
 import uiChrome from 'ui/chrome';
 import { Notifier } from 'ui/notify/notifier';
-import { WAIT_FOR_URL_CHANGE_TOKEN } from 'ui/routes';
+import { WAIT_FOR_URL_CHANGE_TOKEN } from 'ui/routes/route_setup_manager';
 import { gettingStartedGateCheck } from '../add_setup_work';
 import {
   GETTING_STARTED_ROUTE,
