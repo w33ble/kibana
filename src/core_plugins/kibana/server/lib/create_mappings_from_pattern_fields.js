@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 // Creates an ES field mapping from a single field object in a kibana index pattern
-module.exports = function createMappingsFromPatternFields(fields) {
+export default function createMappingsFromPatternFields(fields) {
   if (_.isEmpty(fields)) {
     throw new Error('argument must not be empty');
   }
