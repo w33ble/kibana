@@ -2,15 +2,13 @@ import { VisVisTypeProvider } from 'ui/vis/vis_type';
 import image from '../images/icon-timelion.svg';
 import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 import { TemplateVisTypeProvider } from 'ui/template_vis_type';
+import template from 'plugins/timelion/vis/timelion_vis.html';
+import editorTemplate from 'plugins/timelion/vis/timelion_vis_params.html';
+import 'plugins/timelion/vis/timelion_vis_controller';
+import 'plugins/timelion/vis/timelion_vis_params_controller';
+import 'plugins/timelion/vis/timelion_vis.less';
 
-define(function (require) {
-  // we also need to load the controller and used by the template
-  require('plugins/timelion/vis/timelion_vis_controller');
-  require('plugins/timelion/vis/timelion_vis_params_controller');
-
-  // Stylin
-  require('plugins/timelion/vis/timelion_vis.less');
-
+export default function () {
   // register the provider with the visTypes registry so that other know it exists
   VisTypesRegistryProvider.register(TimelionVisProvider);
 
@@ -26,9 +24,9 @@ define(function (require) {
       image,
       description: 'Build time-series using functional expressions',
       category: VisType.CATEGORY.TIME,
-      template: require('plugins/timelion/vis/timelion_vis.html'),
+      template,
       params: {
-        editor: require('plugins/timelion/vis/timelion_vis_params.html')
+        editor: editorTemplate,
       },
       requiresSearch: false,
       requiresTimePicker: true,
@@ -38,4 +36,4 @@ define(function (require) {
 
   // export the provider so that the visType can be required with Private()
   return TimelionVisProvider;
-});
+}

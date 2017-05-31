@@ -1,4 +1,5 @@
-define(function () {
+// eslint-disable-next-line kibana-custom/no-default-export
+export default function hitSortFn() {
   return function HitSortFnFactory() {
 
     /**
@@ -63,4 +64,4 @@ define(function () {
     };
 
   };
-});
+}

@@ -1,5 +1,4 @@
-define(function () {
-
+export default function tickFormatters() {
   function baseTickFormatter(value, axis) {
     const factor = axis.tickDecimals ? Math.pow(10, axis.tickDecimals) : 1;
     const formatted = '' + Math.round(value * factor) / factor;
@@ -72,4 +71,4 @@ define(function () {
 
     return formatters;
   };
-});
+}

@@ -1,7 +1,7 @@
 import d3 from 'd3';
 import $ from 'jquery';
 
-define(function () {
+export function VislibLibLayoutSplitsColumnChartChartTitleSplitProvider() {
   return function ChartTitleSplitFactory() {
 
     /*
@@ -38,4 +38,4 @@ define(function () {
       });
     };
   };
-});
+}

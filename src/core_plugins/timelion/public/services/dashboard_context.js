@@ -1,9 +1,8 @@
 import _ from 'lodash';
 import { FilterBarQueryFilterProvider } from 'ui/filter_bar/query_filter';
-require('ui/state_management/app_state');
+import 'ui/state_management/app_state';
 
-
-module.exports = function dashboardContext(Private, getAppState) {
+export default function dashboardContext(Private, getAppState) {
   return function () {
     const queryFilter = Private(FilterBarQueryFilterProvider);
     const bool = { must: [], must_not: [] };
@@ -32,4 +31,4 @@ module.exports = function dashboardContext(Private, getAppState) {
 
     return { bool: bool };
   };
-};
+}

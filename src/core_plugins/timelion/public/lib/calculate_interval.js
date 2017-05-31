@@ -1,11 +1,11 @@
 const toMS = require('../../server/lib/to_milliseconds.js');
 
-module.exports = function calculateInterval(from, to, size, interval, min) {
+export default function calculateInterval(from, to, size, interval, min) {
   if (interval !== 'auto') return interval;
   const dateMathInterval = roundInterval((to - from) / size);
   if (toMS(dateMathInterval) < toMS(min)) return min;
   return dateMathInterval;
-};
+}
 
 // Totally cribbed this from Kibana 3.
 // I bet there's something similar in the Kibana 4 code. Somewhere. Somehow.

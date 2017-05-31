@@ -4,7 +4,7 @@ import uiChrome from 'ui/chrome';
 import { WAIT_FOR_URL_CHANGE_TOKEN } from 'ui/routes/route_setup_manager';
 import { Notifier } from 'ui/notify/notifier';
 import { IndexPatternsGetIdsProvider } from 'ui/index_patterns/_get_ids';
-import KbnUrlProvider from 'ui/url';
+import { KbnUrlProvider } from 'ui/url';
 import { hasOptedOutOfGettingStarted, optOutOfGettingStarted } from 'ui/getting_started/opt_out_helpers';
 
 import {

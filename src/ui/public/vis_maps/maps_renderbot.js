@@ -9,8 +9,8 @@ import './lib/tilemap_settings';
 import './styles/_tilemap.less';
 import { ResizeCheckerProvider } from 'ui/resize_checker';
 
-
-module.exports = function MapsRenderbotFactory(Private, $injector, tilemapSettings, Notifier, courier, getAppState) {
+// eslint-disable-next-line kibana-custom/no-default-export
+export default function MapsRenderbotFactory(Private, $injector, tilemapSettings, Notifier, courier, getAppState) {
 
   const ResizeChecker = Private(ResizeCheckerProvider);
   const Renderbot = Private(VisRenderbotProvider);
@@ -261,4 +261,4 @@ module.exports = function MapsRenderbotFactory(Private, $injector, tilemapSettin
 
 
   return MapsRenderbot;
-};
+}

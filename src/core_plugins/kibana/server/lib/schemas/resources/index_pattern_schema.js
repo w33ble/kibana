@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-module.exports = Joi.object({
+export default Joi.object({
   id: Joi.string().required(),
   title: Joi.string().required(),
   time_field_name: Joi.string(),

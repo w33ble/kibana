@@ -1,6 +1,8 @@
 import angular from 'angular';
 import _ from 'lodash';
-define(function () {
+
+// eslint-disable-next-line kibana-custom/no-default-export
+export default function mappingSetp() {
   return function MappingSetupService(kbnIndex, esAdmin) {
     const mappingSetup = this;
 
@@ -106,5 +108,4 @@ define(function () {
       return prom;
     };
   };
-
-});
+}

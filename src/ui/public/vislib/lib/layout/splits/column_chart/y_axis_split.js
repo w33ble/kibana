@@ -1,5 +1,6 @@
 import d3 from 'd3';
-define(function () {
+
+export function VislibLibLayoutSplitsColumnChartYAxisSplitProvider() {
   return function YAxisSplitFactory() {
 
     /*
@@ -36,4 +37,4 @@ define(function () {
       });
     };
   };
-});
+}
