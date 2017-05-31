@@ -1,5 +1,6 @@
 import _ from 'lodash';
-define(function () {
+
+export function VislibComponentsZeroInjectionZeroFilledArrayProvider() {
   return function ZeroFilledArrayUtilService() {
 
     /*
@@ -26,4 +27,4 @@ define(function () {
       return zeroFilledArray;
     };
   };
-});
+}

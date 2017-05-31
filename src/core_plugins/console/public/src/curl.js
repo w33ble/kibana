@@ -1,4 +1,4 @@
-define(function () {
+export default function curl() {
   'use strict';
 
   function detectCURLinLine(line) {
@@ -213,5 +213,4 @@ define(function () {
     parseCURL: parseCURL,
     detectCURL: detectCURL
   };
-
-});
+}

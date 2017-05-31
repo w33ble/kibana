@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { FilterBarQueryFilterProvider } from 'ui/filter_bar/query_filter';
-require('ui/state_management/app_state');
-
+import 'ui/state_management/app_state';
 
 export default function dashboardContext(Private, getAppState) {
   return function () {

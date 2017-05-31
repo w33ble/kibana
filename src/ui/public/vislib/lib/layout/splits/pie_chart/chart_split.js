@@ -1,5 +1,6 @@
 import d3 from 'd3';
-define(function () {
+
+export function VislibLibLayoutSplitsPieChartChartSplitProvider() {
   return function ChartSplitFactory() {
 
     /*
@@ -48,4 +49,4 @@ define(function () {
       });
     };
   };
-});
+}

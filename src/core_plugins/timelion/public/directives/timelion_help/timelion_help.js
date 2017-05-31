@@ -1,8 +1,10 @@
-define(function (require) {
-  const template = require('./timelion_help.html');
-  const app = require('ui/modules').get('apps/timelion', []);
-  const _ = require('lodash');
-  const moment = require('moment');
+import template from './timelion_help.html';
+import { uiModules } from 'ui/modules';
+import _ from 'lodash';
+import moment from 'moment';
+
+export default function timelionHelp() {
+  const app = uiModules.get('apps/timelion', []);
 
   app.directive('timelionHelp', function ($http) {
     return {
@@ -64,5 +66,4 @@ define(function (require) {
       }
     };
   });
-
-});
+}
