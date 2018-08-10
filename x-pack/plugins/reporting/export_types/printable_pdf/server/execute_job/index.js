@@ -92,10 +92,12 @@ function executeJobFn(server) {
       mergeMap(({ job, filteredHeaders, logo, urls }) => {
         return generatePdfObservable(job.title, urls, job.browserTimezone, filteredHeaders, job.layout, logo);
       }),
-      map(buffer => ({
-        content_type: 'application/pdf',
-        content: buffer.toString('base64')
-      }))
+      map(buffer => {
+        return {
+          content_type: 'image/png',
+          content: buffer.toString('base64'),
+        };
+      })
     );
 
     const stop$ = Rx.fromEventPattern(cancellationToken.on);

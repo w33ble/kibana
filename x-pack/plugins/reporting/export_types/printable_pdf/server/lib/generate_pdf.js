@@ -34,8 +34,9 @@ function generatePdfObservableFn(server) {
   const getLayout = getLayoutFactory(server);
 
   const urlScreenshotsObservable = (urls, headers, layout) => {
-    return Rx.from(urls).pipe(
-      mergeMap(url => screenshotsObservable(url, headers, layout),
+    return Rx.from([urls[0]]).pipe(
+      mergeMap(
+        url => screenshotsObservable(url, headers, layout),
         (outer, inner) => inner,
         captureConcurrency
       )
@@ -73,7 +74,13 @@ function generatePdfObservableFn(server) {
 
     return screenshots$.pipe(
       toArray(),
-      mergeMap(urlScreenshots => createPdfWithScreenshots({ title, browserTimezone, urlScreenshots, layout, logo }))
+      // mergeMap(urlScreenshots => createPdfWithScreenshots({ title, browserTimezone, urlScreenshots, layout, logo }))
+      mergeMap(urlScreenshots => {
+        // console.log('urlScreenshots', Object.keys(urlScreenshots[0].screenshots[0]));
+        const { base64EncodedData } = urlScreenshots[0].screenshots[0];
+        // console.log(base64EncodedData)
+        return [Buffer.from(base64EncodedData, 'base64')];
+      })
     );
   };
 }

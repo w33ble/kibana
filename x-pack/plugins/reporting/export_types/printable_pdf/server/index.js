@@ -13,7 +13,7 @@ export function register(registry) {
     ...metadata,
     jobType: 'printable_pdf',
     jobContentEncoding: 'base64',
-    jobContentExtension: 'pdf',
+    jobContentExtension: 'png',
     createJobFactory,
     executeJobFactory,
     validLicenses: ['trial', 'standard', 'gold', 'platinum'],
