@@ -27,36 +27,47 @@ const workerPath = resolve(__dirname, 'babeled.js');
 const heap = {};
 let worker = null;
 
+function runHandler(msg) {
+  const { type, value, id } = msg;
+  if (type === 'run') {
+    const { threadId } = msg;
+    const { ast, context } = value;
+    heap[threadId]
+      .onFunctionNotFound(ast, context)
+      .then(value => {
+        worker.send({ type: 'msgSuccess', id, value: value });
+      })
+      .catch(e => heap[threadId].reject(e));
+  }
+
+  if (type === 'msgSuccess' && heap[id]) heap[id].resolve(value);
+
+  // TODO: I don't think it is even possible to hit this
+  if (type === 'msgError' && heap[id]) heap[id].reject(new Error(value));
+}
+
+function exitHandler() {
+  // No need to look for 'code', our worker is intended to be long lived so
+  // if it isn't running, it's an issue
+  // Heads up: there is no worker.off, so we use worker.removeListener
+  worker.removeListener('message', runHandler);
+  worker.removeListener('exit', exitHandler);
+
+  // Restart immediately on exit since node takes a couple seconds to spin up
+  worker = null;
+  worker = getWorker();
+}
+
 export function getWorker() {
   if (worker) return worker;
   worker = fork(workerPath, {});
 
-  // 'exit' happens whether we kill the worker or it just dies.
-  // No need to look for 'error', our worker is intended to be long lived so it isn't running, it's an issue
-  worker.on('exit', () => {
-    // Heads up: there is no worker.off
-    worker = null;
-    // Restart immediately on exit since node takes a couple seconds to spin up
-    worker = getWorker();
-  });
+  // handle run requests
+  worker.on('message', runHandler);
 
-  worker.on('message', msg => {
-    const { type, value, id } = msg;
-    if (type === 'run') {
-      const { threadId } = msg;
-      const { ast, context } = value;
-      heap[threadId]
-        .onFunctionNotFound(ast, context)
-        .then(value => {
-          worker.send({ type: 'msgSuccess', id, value: value });
-        })
-        .catch(e => heap[threadId].reject(e));
-    }
+  // handle exit event, fired when we kill the worker or it just dies
+  worker.on('exit', exitHandler);
 
-    if (type === 'msgSuccess' && heap[id]) heap[id].resolve(value);
-
-    // TODO: I don't think it is even possible to hit this
-    if (type === 'msgError' && heap[id]) heap[id].reject(new Error(value));
   });
 
   return worker;
@@ -102,7 +113,7 @@ export const thread = ({ onFunctionNotFound, serialize, deserialize }) => {
               onFunctionNotFound(ast, deserialize(context)).then(serialize),
           };
 
-          //
+          // kill the worker after the timeout is exceeded
           setTimeout(() => {
             if (!heap[id]) return; // Looks like this has already been cleared from the heap.
             if (worker) worker.kill();
