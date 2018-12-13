@@ -95,6 +95,7 @@
     "mustache": "^2.3.0",
     "mutation-observer": "^1.0.3",
     "node-fetch": "^2.1.2",
+    "path-is-inside": "^1.0.2",
     "pdf-image": "2.0.0",
     "pdfjs-dist": "^2.0.943",
     "pixelmatch": "4.0.2",

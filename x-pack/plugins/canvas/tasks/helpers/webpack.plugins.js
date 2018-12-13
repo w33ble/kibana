@@ -4,15 +4,15 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-const { writeFileSync } = require('fs');
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const {
-  createServerCodeTransformer,
-} = require('@kbn/interpreter/tasks/build/server_code_transformer');
+import { writeFileSync } from 'fs';
+import path from 'path';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { createServerCodeTransformer } from '@kbn/interpreter/tasks/build/server_code_transformer';
+import { ImportWhitelistPlugin } from './import_whitelist_plugin';
 
 const sourceDir = path.resolve(__dirname, '../../canvas_plugin_src');
 const buildDir = path.resolve(__dirname, '../../canvas_plugin');
+const kbnPackagesDir = path.resolve(__dirname, '../../../../../packages');
 
 export function getWebpackConfig({ devtool, watch, production } = {}) {
   return {
@@ -57,6 +57,13 @@ export function getWebpackConfig({ devtool, watch, production } = {}) {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       mainFields: ['browser', 'main'],
+      plugins: [
+        // whitelist specific imports to ensure that the canvas_plugin bundle
+        // doesn't accidentally end up including unnecessary files.
+        new ImportWhitelistPlugin({
+          whitelist: [/[\/\\]node_modules[\/\\]/, sourceDir, kbnPackagesDir],
+        }),
+      ],
     },
 
     plugins: [
