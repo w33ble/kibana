@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
+const { getId } = require('./../../../shared/lib/get_id');
 const { select } = require('./state');
-const { getId } = require('./../../lib/get_id');
 
 const {
   actionEvent,

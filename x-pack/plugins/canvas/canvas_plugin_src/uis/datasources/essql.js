@@ -7,8 +7,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { EuiFormRow, EuiTextArea } from '@elastic/eui';
-import { getSimpleArg, setSimpleArg } from '../../../public/lib/arg_helpers';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { getSimpleArg, setSimpleArg } from '../../../shared/lib/arg_helpers';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 class EssqlDatasource extends PureComponent {
   componentDidMount() {

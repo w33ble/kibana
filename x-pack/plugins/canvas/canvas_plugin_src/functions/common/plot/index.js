@@ -6,8 +6,8 @@
 
 import keyBy from 'lodash.keyby';
 import { groupBy, get, set, map, sortBy } from 'lodash';
-import { getColorsFromPalette } from '../../../../common/lib/get_colors_from_palette';
-import { getLegendConfig } from '../../../../common/lib/get_legend_config';
+import { getColorsFromPalette } from '../../../../shared/lib/get_colors_from_palette';
+import { getLegendConfig } from '../../../../shared/lib/get_legend_config';
 import { getFlotAxisConfig } from './get_flot_axis_config';
 import { getFontSpec } from './get_font_spec';
 import { seriesStyleToFlot } from './series_style_to_flot';

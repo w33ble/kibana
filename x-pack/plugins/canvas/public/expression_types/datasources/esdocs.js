@@ -7,11 +7,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiFormRow, EuiSelect, EuiFieldText, EuiCallOut, EuiSpacer } from '@elastic/eui';
-import { getSimpleArg, setSimpleArg } from '../../lib/arg_helpers';
+import { getSimpleArg, setSimpleArg } from '../../../shared/lib/arg_helpers';
 import { ESFieldsSelect } from '../../components/es_fields_select';
 import { ESFieldSelect } from '../../components/es_field_select';
 import { ESIndexSelect } from '../../components/es_index_select';
-import { templateFromReactComponent } from '../../lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 const EsdocsDatasource = ({ args, updateArgs }) => {
   const setArg = (name, value) => {

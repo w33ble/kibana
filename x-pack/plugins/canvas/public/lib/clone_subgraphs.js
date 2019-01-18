@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
+import { getId } from '../../shared/lib/get_id';
 import { arrayToMap } from './aeroelastic/functional';
-import { getId } from './get_id';
 
 export const cloneSubgraphs = nodes => {
   const idMap = arrayToMap(nodes.map(n => n.id));

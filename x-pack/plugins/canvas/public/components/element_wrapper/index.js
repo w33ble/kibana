@@ -7,7 +7,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getResolvedArgs, getSelectedPage, isWriteable } from '../../state/selectors/workpad';
-import { getState, getValue, getError } from '../../lib/resolved_arg';
+import { getState, getValue, getError } from '../../../shared/lib/resolved_arg';
 import { ElementWrapper as Component } from './element_wrapper';
 import { createHandlers as createHandlersWithDispatch } from './lib/handlers';
 

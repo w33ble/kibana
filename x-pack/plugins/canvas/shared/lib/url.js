@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { isValidDataUrl } from '../../common/lib/dataurl';
-import { isValidHttpUrl } from '../../common/lib/httpurl';
+import { isValidDataUrl } from '../../shared/lib/dataurl';
+import { isValidHttpUrl } from '../../shared/lib/httpurl';
 
 export function isValidUrl(url) {
   return isValidDataUrl(url) || isValidHttpUrl(url);

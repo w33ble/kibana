@@ -15,8 +15,8 @@ import {
   EuiText,
   EuiTextArea,
 } from '@elastic/eui';
-import { getSimpleArg, setSimpleArg } from '../../../public/lib/arg_helpers';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { getSimpleArg, setSimpleArg } from '../../../shared/lib/arg_helpers';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 const TimelionDatasource = ({ args, updateArgs }) => {
   const setArg = (name, value) => {

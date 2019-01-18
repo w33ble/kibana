@@ -5,8 +5,8 @@
  */
 
 import { map, uniq } from 'lodash';
-import { getState, getValue } from '../../../public/lib/resolved_arg';
-import { legendOptions } from '../../../public/lib/legend_options';
+import { legendOptions } from '../../../shared/lib/legend_options';
+import { getState, getValue } from '../../../shared/lib/resolved_arg';
 
 const styleProps = ['lines', 'bars', 'points', 'fill', 'stack'];
 

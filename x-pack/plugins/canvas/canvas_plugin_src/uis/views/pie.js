@@ -5,8 +5,8 @@
  */
 
 import { map, uniq } from 'lodash';
-import { legendOptions } from '../../../public/lib/legend_options';
-import { getState, getValue } from '../../../public/lib/resolved_arg';
+import { legendOptions } from '../../../shared/lib/legend_options';
+import { getState, getValue } from '../../../shared/lib/resolved_arg';
 
 export const pie = () => ({
   name: 'pie',

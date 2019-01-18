@@ -5,8 +5,8 @@
  */
 
 import { get } from 'lodash';
-import { isValidUrl } from '../../common/lib/url';
-import { missingImage } from '../../common/lib/missing_asset';
+import { isValidUrl } from '../../shared/lib/url';
+import { missingImage } from '../../shared/lib/missing_asset';
 
 /*
  * NOTE: args.dataurl can come as an expression here.

@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import { times } from 'lodash';
 import { elasticOutline } from '../lib/elastic_outline';
-import { isValidUrl } from '../../common/lib/url';
+import { isValidUrl } from '../../shared/lib/url';
 
 export const repeatImage = () => ({
   name: 'repeatImage',

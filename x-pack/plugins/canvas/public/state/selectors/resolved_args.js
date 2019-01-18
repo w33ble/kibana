@@ -5,7 +5,7 @@
  */
 
 import { get } from 'lodash';
-import * as argHelper from '../../lib/resolved_arg';
+import * as argHelper from '../../../shared/lib/resolved_arg';
 import { prepend } from '../../lib/modify_path';
 
 export function getArg(state, path) {

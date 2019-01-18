@@ -5,7 +5,7 @@
  */
 
 import { evaluate } from 'tinymath';
-import { pivotObjectArray } from '../../../common/lib/pivot_object_array';
+import { pivotObjectArray } from '../../../shared/lib/pivot_object_array';
 
 export const math = () => ({
   name: 'math',

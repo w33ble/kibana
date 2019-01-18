@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { templateFromReactComponent } from '../../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../../shared/lib/template_from_react_component';
 import { SimpleTemplate } from './simple_template';
 import { ExtendedTemplate } from './extended_template';
 

@@ -5,7 +5,7 @@
  */
 
 import { elasticLogo } from '../../lib/elastic_logo';
-import { resolveFromArgs } from '../../../common/lib/resolve_dataurl';
+import { resolveFromArgs } from '../../../shared/lib/resolve_dataurl';
 
 export const image = () => ({
   name: 'image',

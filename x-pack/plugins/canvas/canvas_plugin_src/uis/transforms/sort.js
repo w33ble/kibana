@@ -5,7 +5,7 @@
  */
 
 import { get } from 'lodash';
-import { getState, getValue } from '../../../public/lib/resolved_arg';
+import { getState, getValue } from '../../../shared/lib/resolved_arg';
 
 export const sort = () => ({
   name: 'sort',

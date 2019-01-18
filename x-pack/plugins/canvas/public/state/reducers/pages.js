@@ -7,7 +7,7 @@
 import { handleActions } from 'redux-actions';
 import { set, del, insert } from 'object-path-immutable';
 import { cloneSubgraphs } from '../../lib/clone_subgraphs';
-import { getId } from '../../lib/get_id';
+import { getId } from '../../../shared/lib/get_id';
 import { routerProvider } from '../../lib/router_provider';
 import { getDefaultPage } from '../defaults';
 import * as actions from '../actions/pages';

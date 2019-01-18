@@ -6,7 +6,7 @@
 
 import boom from 'boom';
 import { CANVAS_TYPE, API_ROUTE_WORKPAD } from '../../common/lib/constants';
-import { getId } from '../../public/lib/get_id';
+import { getId } from '../../shared/lib/get_id';
 
 export function workpad(server) {
   //const config = server.config();

@@ -5,7 +5,7 @@
  */
 
 import { parse } from 'tinymath';
-import { unquoteString } from '../../../../common/lib/unquote_string';
+import { unquoteString } from '../../../../shared/lib/unquote_string';
 
 // break out into separate function, write unit tests first
 export function getFormObject(argValue) {

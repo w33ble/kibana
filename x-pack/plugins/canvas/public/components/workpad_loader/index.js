@@ -11,7 +11,7 @@ import * as workpadService from '../../lib/workpad_service';
 import { notify } from '../../lib/notify';
 import { canUserWrite } from '../../state/selectors/app';
 import { getWorkpad } from '../../state/selectors/workpad';
-import { getId } from '../../lib/get_id';
+import { getId } from '../../../shared/lib/get_id';
 import { setCanUserWrite } from '../../state/actions/transient';
 import { downloadWorkpad } from '../../lib/download_workpad';
 import { WorkpadLoader as Component } from './workpad_loader';

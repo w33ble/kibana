@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { resolveWithMissingImage } from '../../../common/lib/resolve_dataurl';
+import { resolveWithMissingImage } from '../../../shared/lib/resolve_dataurl';
 import { elasticOutline } from '../../lib/elastic_outline';
 
 export const repeatImage = () => ({

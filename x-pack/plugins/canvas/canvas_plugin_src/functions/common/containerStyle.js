@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { isValidUrl } from '../../../common/lib/url';
+import { isValidUrl } from '../../../shared/lib/url';
 
 export const containerStyle = () => ({
   name: 'containerStyle',

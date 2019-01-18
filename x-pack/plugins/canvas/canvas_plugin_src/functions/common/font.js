@@ -5,7 +5,7 @@
  */
 
 import inlineStyle from 'inline-style';
-import { openSans } from '../../../common/lib/fonts';
+import { openSans } from '../../../shared/lib/fonts';
 
 const weights = [
   'normal',

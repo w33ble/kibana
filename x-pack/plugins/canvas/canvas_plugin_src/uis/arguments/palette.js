@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { getType } from '@kbn/interpreter/common';
 import { PalettePicker } from '../../../public/components/palette_picker';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 const PaletteArgInput = ({ onValueChange, argValue, renderError }) => {
   // Why is this neccesary? Does the dialog really need to know what parameter it is setting?

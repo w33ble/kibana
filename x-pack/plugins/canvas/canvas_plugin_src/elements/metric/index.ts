@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { openSans } from '../../../common/lib/fonts';
+import { openSans } from '../../../shared/lib/fonts';
 import header from './header.png';
 
 import { ElementFactory } from '../types';
@@ -18,8 +18,8 @@ export const metric: ElementFactory = () => ({
   expression: `filters
 | demodata
 | math "unique(country)"
-| metric "Countries" 
-  metricFont={font size=48 family="${openSans.value}" color="#000000" align="center" lHeight=48} 
+| metric "Countries"
+  metricFont={font size=48 family="${openSans.value}" color="#000000" align="center" lHeight=48}
   labelFont={font size=14 family="${openSans.value}" color="#000000" align="center"}
 | render`,
 });

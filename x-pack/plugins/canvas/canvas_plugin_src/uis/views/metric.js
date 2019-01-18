@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { openSans } from '../../../common/lib/fonts';
+import { openSans } from '../../../shared/lib/fonts';
 
 export const metric = () => ({
   name: 'metric',

@@ -5,7 +5,7 @@
  */
 
 import expect from 'expect.js';
-import { openSans } from '../../../../common/lib/fonts';
+import { openSans } from '../../../../shared/lib/fonts';
 import { font } from '../font';
 import { functionWrapper } from '../../../../__tests__/helpers/function_wrapper';
 

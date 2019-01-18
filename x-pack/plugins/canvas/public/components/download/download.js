@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import fileSaver from 'file-saver';
 import { toByteArray } from 'base64-js';
-import { parseDataUrl } from '../../../common/lib/dataurl';
+import { parseDataUrl } from '../../../shared/lib/dataurl';
 
 export class Download extends React.PureComponent {
   static propTypes = {

@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 import { ShapePickerMini } from '../../../public/components/shape_picker_mini/';
 
 const ShapeArgInput = ({ onValueChange, argValue, typeInstance }) => (

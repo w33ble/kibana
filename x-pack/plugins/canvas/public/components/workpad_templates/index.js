@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 import { compose, getContext, withHandlers, withProps } from 'recompose';
 import * as workpadService from '../../lib/workpad_service';
 import { notify } from '../../lib/notify';
-import { getId } from '../../lib/get_id';
 import { templatesRegistry } from '../../lib/templates_registry';
 import { tagsRegistry } from '../../lib/tags_registry';
+import { getId } from '../../../shared/lib/get_id';
 import { WorkpadTemplates as Component } from './workpad_templates';
 
 export const WorkpadTemplates = compose(

@@ -5,7 +5,7 @@
  */
 
 import { get } from 'lodash';
-import { openSans } from '../../../common/lib/fonts';
+import { openSans } from '../../../shared/lib/fonts';
 
 const shapes = [
   'gauge',

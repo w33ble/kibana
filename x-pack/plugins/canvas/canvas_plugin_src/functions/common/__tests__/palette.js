@@ -7,7 +7,7 @@
 import expect from 'expect.js';
 import { palette } from '../palette';
 import { functionWrapper } from '../../../../__tests__/helpers/function_wrapper';
-import { palettes } from '../../../../common/lib/palettes';
+import { palettes } from '../../../../shared/lib/palettes';
 
 describe('palette', () => {
   const fn = functionWrapper(palette);

@@ -11,7 +11,7 @@ import { EuiSelect, EuiFlexItem, EuiFlexGroup } from '@elastic/eui';
 import { sortBy } from 'lodash';
 import { getType } from '@kbn/interpreter/common';
 import { createStatefulPropHoc } from '../../../../public/components/enhance/stateful_prop';
-import { templateFromReactComponent } from '../../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../../shared/lib/template_from_react_component';
 import { SimpleMathFunction } from './simple_math_function';
 import { getFormObject } from './get_form_object';
 

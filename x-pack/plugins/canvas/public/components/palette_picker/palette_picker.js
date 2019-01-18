@@ -10,7 +10,7 @@ import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
 import { map } from 'lodash';
 import { Popover } from '../popover';
 import { PaletteSwatch } from '../palette_swatch';
-import { palettes } from '../../../common/lib/palettes';
+import { palettes } from '../../../shared/lib/palettes';
 
 export const PalettePicker = ({ onChange, value, anchorPosition }) => {
   const button = handleClick => (

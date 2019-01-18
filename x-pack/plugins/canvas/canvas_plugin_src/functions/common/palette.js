@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { palettes } from '../../../common/lib/palettes';
+import { palettes } from '../../../shared/lib/palettes';
 export const palette = () => ({
   name: 'palette',
   aliases: [],

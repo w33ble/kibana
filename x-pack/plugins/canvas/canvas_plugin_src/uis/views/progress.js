@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { openSans } from '../../../common/lib/fonts';
+import { openSans } from '../../../shared/lib/fonts';
 import { shapes } from '../../renderers/progress/shapes';
 
 export const progress = () => ({

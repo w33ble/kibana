@@ -7,8 +7,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
-import { templateFromReactComponent } from '../../lib/template_from_react_component';
-import { ColorPickerMini } from '../../components/color_picker_mini/';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
+import { ColorPickerMini } from '../../components/color_picker_mini';
 
 const ColorArgInput = ({ onValueChange, argValue, workpad }) => (
   <EuiFlexGroup gutterSize="s">

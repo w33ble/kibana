@@ -10,7 +10,7 @@ import { compose, withProps } from 'recompose';
 import { EuiForm, EuiTextArea, EuiSpacer, EuiButton } from '@elastic/eui';
 import { get } from 'lodash';
 import { createStatefulPropHoc } from '../../../public/components/enhance/stateful_prop';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 const TextAreaArgInput = ({ updateValue, value, confirm, commit, renderError, argId }) => {
   if (typeof value !== 'string') {

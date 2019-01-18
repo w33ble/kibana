@@ -9,10 +9,10 @@ import PropTypes from 'prop-types';
 import { EuiSpacer, EuiButtonGroup } from '@elastic/eui';
 import { AssetPicker } from '../../../../public/components/asset_picker';
 import { elasticOutline } from '../../../lib/elastic_outline';
-import { resolveFromArgs } from '../../../../common/lib/resolve_dataurl';
-import { isValidHttpUrl } from '../../../../common/lib/httpurl';
-import { encode } from '../../../../common/lib/dataurl';
-import { templateFromReactComponent } from '../../../../public/lib/template_from_react_component';
+import { resolveFromArgs } from '../../../../shared/lib/resolve_dataurl';
+import { isValidHttpUrl } from '../../../../shared/lib/httpurl';
+import { encode } from '../../../../shared/lib/dataurl';
+import { templateFromReactComponent } from '../../../../shared/lib/template_from_react_component';
 import './image_upload.scss';
 import { FileForm, LinkForm } from './forms';
 

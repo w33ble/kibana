@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { getId } from '../../../public/lib/get_id';
+import { getId } from '../../../shared/lib/get_id';
 import { shapes } from './shapes';
 
 export const progress = () => ({

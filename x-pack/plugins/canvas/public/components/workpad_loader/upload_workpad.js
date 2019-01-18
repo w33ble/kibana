@@ -5,7 +5,7 @@
  */
 
 import { get } from 'lodash';
-import { getId } from '../../lib/get_id';
+import { getId } from '../../../shared/lib/get_id';
 import { notify } from '../../lib/notify';
 
 export const uploadWorkpad = (file, onUpload) => {

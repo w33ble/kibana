@@ -5,7 +5,7 @@
  */
 
 import expect from 'expect.js';
-import { getColorsFromPalette } from '../../lib/get_colors_from_palette';
+import { getColorsFromPalette } from '../../../shared/lib/get_colors_from_palette';
 import {
   grayscalePalette,
   gradientPalette,
