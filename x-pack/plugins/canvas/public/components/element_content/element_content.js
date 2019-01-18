@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { pure, compose, branch, renderComponent } from 'recompose';
 import Style from 'style-it';
 import { getType } from '@kbn/interpreter/common';
-import { Loading } from '../loading';
+import { Loading } from '../../../shared/components/loading';
 import { RenderWithFn } from '../render_with_fn';
 import { ElementShareContainer } from '../element_share_container';
 import { InvalidExpression } from './invalid_expression';

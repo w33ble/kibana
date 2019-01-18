@@ -6,7 +6,7 @@
 
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Debug } from '../../public/components/debug';
+import { Debug } from '../../shared/components/debug';
 
 export const debug = () => ({
   name: 'debug',

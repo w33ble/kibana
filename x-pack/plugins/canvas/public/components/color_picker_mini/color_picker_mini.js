@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiLink } from '@elastic/eui';
-import { Popover } from '../popover';
+import { Popover } from '../../../shared/components/popover';
 import { ColorPicker } from '../color_picker';
 import { ColorDot } from '../color_dot';
 import { WorkpadColorPicker } from '../workpad_color_picker/';

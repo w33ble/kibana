@@ -5,8 +5,8 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from '../../../../../public/components/loading/loading';
-import { FileUpload } from '../../../../../public/components/file_upload';
+import { Loading } from '../../../../../shared/components/loading/loading';
+import { FileUpload } from '../../../../../shared/components/file_upload';
 
 export const FileForm = ({ loading, onUpload }) =>
   loading ? <Loading animated text="Image uploading" /> : <FileUpload onUpload={onUpload} />;

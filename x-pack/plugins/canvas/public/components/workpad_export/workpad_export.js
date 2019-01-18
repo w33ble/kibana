@@ -16,7 +16,7 @@ import {
   EuiIcon,
   EuiText,
 } from '@elastic/eui';
-import { Popover } from '../popover';
+import { Popover } from '../../../shared/components/popover';
 import { Clipboard } from '../clipboard';
 
 export class WorkpadExport extends React.PureComponent {

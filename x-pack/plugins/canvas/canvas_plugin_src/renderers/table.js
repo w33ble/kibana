@@ -7,7 +7,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { get } from 'lodash';
-import { Datatable } from '../../public/components/datatable';
+import { Datatable } from '../../shared/components/datatable';
 
 export const table = () => ({
   name: 'table',

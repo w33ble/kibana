@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from '../loading';
+import { Loading } from '../../../shared/components/loading';
 import { ArgLabel } from './arg_label';
 
 export class PendingArgValue extends React.PureComponent {

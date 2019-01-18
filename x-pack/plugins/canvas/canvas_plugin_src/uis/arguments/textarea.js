@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 import { compose, withProps } from 'recompose';
 import { EuiForm, EuiTextArea, EuiSpacer, EuiButton } from '@elastic/eui';
 import { get } from 'lodash';
-import { createStatefulPropHoc } from '../../../public/components/enhance/stateful_prop';
 import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
+import { createStatefulPropHoc } from '../../../shared/components/enhance/stateful_prop';
 
 const TextAreaArgInput = ({ updateValue, value, confirm, commit, renderError, argId }) => {
   if (typeof value !== 'string') {

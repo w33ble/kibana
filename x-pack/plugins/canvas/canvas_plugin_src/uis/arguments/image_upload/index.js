@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiSpacer, EuiButtonGroup } from '@elastic/eui';
-import { AssetPicker } from '../../../../public/components/asset_picker';
+import { AssetPicker } from '../../../../shared/components/asset_picker';
 import { elasticOutline } from '../../../lib/elastic_outline';
 import { resolveFromArgs } from '../../../../shared/lib/resolve_dataurl';
 import { isValidHttpUrl } from '../../../../shared/lib/httpurl';

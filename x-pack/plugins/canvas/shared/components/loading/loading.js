@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiLoadingSpinner, EuiIcon, isColorDark } from '@elastic/eui';
-import { hexToRgb } from '../../../common/lib/hex_to_rgb';
+import { hexToRgb } from '../../lib/hex_to_rgb';
 
 export const Loading = ({ animated, text, backgroundColor }) => {
   if (animated) {

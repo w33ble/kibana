@@ -17,8 +17,8 @@ import {
   EuiSearchBar,
 } from '@elastic/eui';
 import { get, sortByOrder } from 'lodash';
-import { Paginate } from '../paginate';
 import { getId } from '../../../shared/lib/get_id';
+import { Paginate } from '../../../shared/components/paginate';
 
 export class WorkpadTemplates extends React.PureComponent {
   static propTypes = {

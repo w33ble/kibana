@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from '../loading';
+import { Loading } from '../../../shared/components/loading';
 
 export class FunctionFormContextPending extends React.PureComponent {
   static propTypes = {

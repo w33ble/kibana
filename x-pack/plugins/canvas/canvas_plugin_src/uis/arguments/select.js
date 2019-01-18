@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiSelect } from '@elastic/eui';
-import { templateFromReactComponent } from '../../../public/lib/template_from_react_component';
+import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
 
 const SelectArgInput = ({ typeInstance, onValueChange, argValue, argId }) => {
   const choices = typeInstance.options.choices.map(({ value, name }) => ({ value, text: name }));

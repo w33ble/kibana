@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popover } from '../../../../../public/components/popover';
+import { Popover } from '../../../../../shared/components/popover';
 import { PrettyDuration } from '../pretty_duration';
 import { TimePicker } from '../time_picker';
 import './time_picker_mini.scss';

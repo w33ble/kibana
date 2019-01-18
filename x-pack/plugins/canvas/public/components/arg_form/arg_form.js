@@ -7,7 +7,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { compose, branch, renderComponent } from 'recompose';
-import { ErrorBoundary } from '../enhance/error_boundary';
+import { ErrorBoundary } from '../../../shared/components/enhance/error_boundary';
 import { ArgSimpleForm } from './arg_simple_form';
 import { ArgTemplateForm } from './arg_template_form';
 import { SimpleFailure } from './simple_failure';

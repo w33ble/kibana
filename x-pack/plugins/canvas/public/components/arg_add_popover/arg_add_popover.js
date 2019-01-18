@@ -7,7 +7,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { EuiButtonIcon } from '@elastic/eui';
-import { Popover } from '../popover';
+import { Popover } from '../../../shared/components/popover';
 import { ArgAdd } from '../arg_add';
 
 export const ArgAddPopover = ({ options }) => {

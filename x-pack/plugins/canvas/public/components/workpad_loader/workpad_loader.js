@@ -21,7 +21,7 @@ import { sortByOrder } from 'lodash';
 import moment from 'moment';
 import { ConfirmModal } from '../confirm_modal';
 import { Link } from '../link';
-import { Paginate } from '../paginate';
+import { Paginate } from '../../../shared/components/paginate';
 import { WorkpadDropzone } from './workpad_dropzone';
 import { WorkpadCreate } from './workpad_create';
 import { WorkpadSearch } from './workpad_search';

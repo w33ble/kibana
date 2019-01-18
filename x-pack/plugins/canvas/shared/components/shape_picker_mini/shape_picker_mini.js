@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiLink } from '@elastic/eui';
 import { Popover } from '../popover';
-import { ShapePicker } from '../shape_picker/';
+import { ShapePicker } from '../shape_picker';
 import { ShapePreview } from '../shape_preview';
 
 export const ShapePickerMini = ({ shapes, onChange, value, anchorPosition }) => {

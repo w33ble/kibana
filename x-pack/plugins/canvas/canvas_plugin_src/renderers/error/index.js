@@ -7,8 +7,8 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { EuiIcon } from '@elastic/eui';
-import { Error } from '../../../public/components/error';
-import { Popover } from '../../../public/components/popover';
+import { Error } from '../../../shared/components/error';
+import { Popover } from '../../../shared/components/popover';
 
 export const error = () => ({
   name: 'error',

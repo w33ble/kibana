@@ -7,7 +7,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
-import { ErrorBoundary } from '../components/enhance/error_boundary';
+import { ErrorBoundary } from '../../shared/components/enhance/error_boundary';
 
 export const templateFromReactComponent = Component => {
   const WrappedComponent = props => (

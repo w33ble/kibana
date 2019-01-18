@@ -7,7 +7,7 @@
 import { interpretAst } from 'plugins/interpreter/interpreter';
 import { pure, compose, lifecycle, withState, branch, renderComponent } from 'recompose';
 import { PropTypes } from 'prop-types';
-import { Loading } from '../../loading';
+import { Loading } from '../../../../shared/components/loading';
 import { DatasourcePreview as Component } from './datasource_preview';
 
 export const DatasourcePreview = compose(

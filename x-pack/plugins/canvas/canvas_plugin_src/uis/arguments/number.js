@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 import { compose, withProps } from 'recompose';
 import { EuiFieldNumber, EuiButton, EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
 import { get } from 'lodash';
-import { createStatefulPropHoc } from '../../../public/components/enhance/stateful_prop';
 import { templateFromReactComponent } from '../../../shared/lib/template_from_react_component';
+import { createStatefulPropHoc } from '../../../shared/components/enhance/stateful_prop';
 
 // This is basically a direct copy of the string input, but with some Number() goodness maybe you think that's cheating and it should be
 // abstracted. If you can think of a 3rd or 4th usage for that abstraction, cool, do it, just don't make it more confusing. Copying is the

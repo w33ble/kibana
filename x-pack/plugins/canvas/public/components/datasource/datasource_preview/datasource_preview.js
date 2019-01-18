@@ -16,8 +16,8 @@ import {
   EuiText,
   EuiEmptyPrompt,
 } from '@elastic/eui';
-import { Datatable } from '../../datatable';
-import { Error } from '../../error';
+import { Datatable } from '../../../../shared/components/datatable';
+import { Error } from '../../../../shared/components/error';
 
 export const DatasourcePreview = ({ done, datatable }) => (
   <EuiOverlayMask>

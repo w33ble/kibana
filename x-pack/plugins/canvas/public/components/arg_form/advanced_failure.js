@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { compose, withProps, withPropsOnChange } from 'recompose';
 import { EuiForm, EuiTextArea, EuiButton, EuiButtonEmpty, EuiFormRow } from '@elastic/eui';
 import { fromExpression, toExpression } from '@kbn/interpreter/common';
-import { createStatefulPropHoc } from '../../components/enhance/stateful_prop';
+import { createStatefulPropHoc } from '../../../shared/components/enhance/stateful_prop';
 
 export const AdvancedFailureComponent = props => {
   const {
