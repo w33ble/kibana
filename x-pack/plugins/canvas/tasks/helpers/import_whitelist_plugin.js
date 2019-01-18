@@ -5,10 +5,20 @@
  */
 
 import { relative, resolve } from 'path';
+import { openSync } from 'fs';
 import chalk from 'chalk';
 import isPathInside from 'path-is-inside';
 
 const KIBANA_ROOT = resolve(__dirname, '../../../../..');
+
+function exists(path) {
+  try {
+    openSync(path, 'r');
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 function match(path, pathsOrRegexps) {
   return [].concat(pathsOrRegexps).some(pathOrRegexp => {
@@ -39,7 +49,7 @@ export class ImportWhitelistPlugin {
         return;
       }
 
-      if (!match(request.path, this.whitelist)) {
+      if (exists(request.path) && !match(request.path, this.whitelist)) {
         throw new Error(
           `Attempted to import "${chalk.yellow(relative(KIBANA_ROOT, request.path))}" which ` +
             `is not in the whitelist for the ${chalk.cyan(relative(KIBANA_ROOT, this.from))} ` +
