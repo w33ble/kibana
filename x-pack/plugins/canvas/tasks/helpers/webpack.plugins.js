@@ -13,6 +13,13 @@ import { ImportWhitelistPlugin } from './import_whitelist_plugin';
 const sourceDir = path.resolve(__dirname, '../../canvas_plugin_src');
 const buildDir = path.resolve(__dirname, '../../canvas_plugin');
 const sharedDir = path.resolve(__dirname, '../../shared');
+const KIBANA_ROOT = path.resolve(__dirname, '../../../../..');
+const PACKAGE_ROOT = path.resolve(KIBANA_ROOT, 'packages');
+
+const whitelistModules = [
+  path.join(PACKAGE_ROOT, 'elastic-datemath'),
+  path.join(PACKAGE_ROOT, 'kbn-interpreter'),
+];
 
 export function getWebpackConfig({ devtool, watch, production } = {}) {
   return {
@@ -65,7 +72,7 @@ export function getWebpackConfig({ devtool, watch, production } = {}) {
         // with the rest of the canvas app
         new ImportWhitelistPlugin({
           from: sourceDir,
-          whitelist: [/[\/\\]node_modules[\/\\]/, sourceDir, sharedDir],
+          whitelist: [/[\/\\]node_modules[\/\\]/, sourceDir, sharedDir, ...whitelistModules],
         }),
         // only whitelist node_modules and code within the shared directory so that
         // they can safely be imported by the canvas_plugin_src or the canvas app
