@@ -31,6 +31,11 @@ export const timefilter = () => ({
       aliases: ['t', 'end'],
       help: 'End of the range, in ISO8601 or Elasticsearch datemath format',
     },
+    filterGroup: {
+      type: ['string', 'null'],
+      aliases: ['group', 'g'],
+      help: 'Group name for the filter',
+    },
   },
   fn: (context, args) => {
     if (!args.from && !args.to) {

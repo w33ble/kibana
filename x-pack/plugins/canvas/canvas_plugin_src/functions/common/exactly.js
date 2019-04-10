@@ -23,6 +23,11 @@ export const exactly = () => ({
       aliases: ['v', 'val'],
       help: 'The value to match exactly, including white space and capitalization',
     },
+    filterGroup: {
+      type: ['string', 'null'],
+      aliases: ['group', 'g'],
+      help: 'Group name for the filter',
+    },
   },
   fn: (context, args) => {
     const { value, column } = args;

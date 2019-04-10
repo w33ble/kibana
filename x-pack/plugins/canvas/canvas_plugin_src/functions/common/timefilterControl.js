@@ -24,6 +24,10 @@ export const timefilterControl = () => ({
       default: true,
       options: [true, false],
     },
+    filterGroup: {
+      type: ['string', 'null'],
+      help: 'Group name for the filter',
+    },
   },
   fn: (context, args) => {
     return {

@@ -23,9 +23,14 @@ export const dropdownControl = () => ({
       type: ['string'],
       help: 'The datatable column from which to extract the unique values for the drop down',
     },
+    filterGroup: {
+      type: ['string', 'null'],
+      help: 'Group name for the filter',
+    },
   },
-  fn: (context, { valueColumn, filterColumn }) => {
+  fn: (context, { valueColumn, filterColumn, filterGroup }) => {
     let choices = [];
+
     if (context.rows[0][valueColumn]) {
       choices = uniq(context.rows.map(row => row[valueColumn])).sort();
     }
@@ -38,6 +43,7 @@ export const dropdownControl = () => ({
       value: {
         column,
         choices,
+        filterGroup,
       },
     };
   },
