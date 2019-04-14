@@ -16,18 +16,18 @@ import {
   deleteArgumentAtIndex,
 } from '../../state/actions/elements';
 import {
-  getSelectedElement,
   getSelectedPage,
   getContextForIndex,
+  getElementById,
   getGlobalFilterGroups,
 } from '../../state/selectors/workpad';
 import { getAssets } from '../../state/selectors/assets';
 import { findExistingAsset } from '../../lib/find_existing_asset';
 import { FunctionForm as Component } from './function_form';
 
-const mapStateToProps = (state, { expressionIndex }) => ({
+const mapStateToProps = (state, { expressionIndex, elementId }) => ({
+  element: getElementById(state, elementId, getSelectedPage(state)),
   context: getContextForIndex(state, expressionIndex),
-  element: getSelectedElement(state),
   pageId: getSelectedPage(state),
   assets: getAssets(state),
   filterGroups: getGlobalFilterGroups(state),
@@ -74,7 +74,8 @@ const mapDispatchToProps = (dispatch, { expressionIndex }) => ({
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { element, pageId, assets } = stateProps;
+  const { pageId, assets, element } = stateProps;
+
   const { argType, nextArgType } = ownProps;
   const {
     updateContext,
