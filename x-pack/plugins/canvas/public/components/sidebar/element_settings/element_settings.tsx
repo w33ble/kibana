@@ -4,7 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
+import isEqual from 'react-fast-compare';
 import PropTypes from 'prop-types';
 import { EuiSpacer, EuiTabbedContent } from '@elastic/eui';
 // @ts-ignore unconverted component
@@ -20,35 +21,42 @@ interface Props {
   element: PositionedElement;
 }
 
-export const ElementSettings: FunctionComponent<Props> = ({ element }) => {
-  const tabs = [
-    {
-      id: 'edit',
-      name: 'Display',
-      content: (
-        <div className="canvasSidebar__pop">
-          <EuiSpacer size="s" />
-          <div className="canvasSidebar--args">
-            <FunctionFormList element={element} />
+export class ElementSettings extends Component<Props> {
+  static propTypes = {
+    element: PropTypes.object,
+  };
+
+  shouldComponentUpdate(nextProps: Props) {
+    return !isEqual(nextProps, this.props);
+  }
+
+  render() {
+    const { element } = this.props;
+    const tabs = [
+      {
+        id: 'edit',
+        name: 'Display',
+        content: (
+          <div className="canvasSidebar__pop">
+            <EuiSpacer size="s" />
+            <div className="canvasSidebar--args">
+              <FunctionFormList element={element} />
+            </div>
           </div>
-        </div>
-      ),
-    },
-    {
-      id: 'data',
-      name: 'Data',
-      content: (
-        <div className="canvasSidebar__pop">
-          <EuiSpacer size="s" />
-          <Datasource />
-        </div>
-      ),
-    },
-  ];
+        ),
+      },
+      {
+        id: 'data',
+        name: 'Data',
+        content: (
+          <div className="canvasSidebar__pop">
+            <EuiSpacer size="s" />
+            <Datasource />
+          </div>
+        ),
+      },
+    ];
 
-  return <EuiTabbedContent tabs={tabs} initialSelectedTab={tabs[0]} size="s" />;
-};
-
-ElementSettings.propTypes = {
-  element: PropTypes.object,
-};
+    return <EuiTabbedContent tabs={tabs} initialSelectedTab={tabs[0]} size="s" />;
+  }
+}
