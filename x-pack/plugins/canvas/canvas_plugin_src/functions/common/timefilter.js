@@ -33,7 +33,6 @@ export const timefilter = () => ({
     },
     filterGroup: {
       type: ['string', 'null'],
-      aliases: ['group', 'g'],
       help: 'Group name for the filter',
     },
   },
