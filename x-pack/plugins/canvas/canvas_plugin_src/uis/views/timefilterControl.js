@@ -20,7 +20,7 @@ export const timefilterControl = () => ({
     },
     {
       name: 'filterGroup',
-      displayName: 'Filter Group Name',
+      displayName: 'Filter group name',
       help:
         'This group name can be used to select specific filters via the filters function in the expression',
       argType: 'filterGroup',
