@@ -53,6 +53,7 @@ const deleteElementShortcuts = ['del', 'backspace'];
 const groupShortcut = ['g'];
 const ungroupShortcut = ['u'];
 const fullscreentExitShortcut = ['esc'];
+const fullscreenPageCycle = ['p'];
 
 export const keymap = {
   ELEMENT: {
@@ -120,5 +121,6 @@ export const keymap = {
       key === 'help' ? osShortcuts : osShortcuts.concat(['space', 'right'])
     ),
     REFRESH: refreshShortcut,
+    PAGE_CYCLE_TOGGLE: { ...getShortcuts(fullscreenPageCycle), help: 'Toggle page cycling' },
   },
 };
