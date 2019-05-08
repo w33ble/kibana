@@ -40,11 +40,10 @@ const withGlobalState = (commit, updateGlobalState) => (type, payload) => {
   }
 };
 
-const MultiElementSidebar = ({ commit, updateGlobalState }) => (
+const MultiElementSidebar = ({ commit, updateGlobalState, selectedToplevelNodes }) => (
   <Fragment>
     <SidebarHeader title="Multiple elements" commit={withGlobalState(commit, updateGlobalState)} />
-    <EuiSpacer />
-    <MultiElementSettings />
+    <MultiElementSettings selectedToplevelNodes={selectedToplevelNodes} />
   </Fragment>
 );
 

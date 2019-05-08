@@ -4,15 +4,35 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { FunctionComponent } from 'react';
-import { EuiText } from '@elastic/eui';
+import React, { Fragment, FunctionComponent } from 'react';
+import { EuiAccordion, EuiText } from '@elastic/eui';
+import { ElementSettings } from './element_settings';
 
-export const MultiElementSettings: FunctionComponent = () => (
-  <EuiText size="s">
-    <p>Multiple elements are currently selected.</p>
-    <p>
-      Deselect these elements to edit their individual settings, press (G) to group them, or save
-      this selection as a new element to re-use it throughout your workpad.
-    </p>
-  </EuiText>
+interface Props {
+  selectedToplevelNodes: string[];
+}
+
+export const MultiElementSettings: FunctionComponent<Props> = ({ selectedToplevelNodes }) => (
+  <Fragment>
+    {selectedToplevelNodes.map((elementId: string) => {
+      // skip groups for now
+      if (elementId.includes('group')) {
+        return null;
+      }
+
+      return (
+        <EuiAccordion
+          id={`element-config-${elementId}`}
+          key={`element-config-${elementId}`}
+          buttonContent={
+            <EuiText size="s" color="subdued">
+              {elementId}
+            </EuiText>
+          }
+        >
+          <ElementSettings selectedElementId={elementId} />
+        </EuiAccordion>
+      );
+    })}
+  </Fragment>
 );
